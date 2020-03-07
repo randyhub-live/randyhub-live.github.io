@@ -11,3 +11,8 @@ body {
     font-size: 64px;
     text-align: center;
 }
+
+#links {
+    background: white;
+    text-align: center;
+}
