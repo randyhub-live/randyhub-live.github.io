@@ -1,0 +1,34 @@
+table {
+  border: .1rem solid #333;
+  border-collapse: collapse;
+}
+
+table > tr:hover {
+  background-color: #eee;
+  border: 1px solid #000;
+}
+
+/* fist header row */
+table > tr:nth-child(2){
+  background-color: #000;
+  text-transform: capitalize;
+}
+
+table > tr > th {
+  color: #fcfcfc;
+  padding: .5rem;
+}
+
+table > tr > td {
+  border: 1px solid #ddd;
+  padding: .3em;
+}
+
+table> tr > td:nth-child(3n+1){
+  font-style: italic;
+}
+
+
+table> tr > td:nth-child(2n), table> tr > td:nth-child(3n){
+  text-align: right;
+}
