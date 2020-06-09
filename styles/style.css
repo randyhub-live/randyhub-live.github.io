@@ -1,18 +1,8 @@
 body {
-    background-image: url("../assets/bestpic.png");
-    background-repeat: repeat;
 }
 
 .title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    color: white;
-    font-size: 64px;
-    text-align: center;
 }
 
 #links {
-    background: white;
-    text-align: center;
 }
