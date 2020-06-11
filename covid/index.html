@@ -1,6 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
 
-  <body></body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>COVID DASHBOARD on RandyHub</title>
+</head>
+<h1>COVID DASHBOARD for Canada</h1>
+<table>
+
+  <tfoot>
+    <tr>
+      <td colspan="100%">
+        source: <a target="_blank" href="https://systems.jhu.edu/research/public-health/ncov/">Johns Hopkins University</a>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<body>
+
+  <script>
+    (async () => {
+
+      const table = document.querySelector('table');
+      const trHeader = document.createElement('tr');
+
+      const covidResponse = await fetch('https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=CA')
+        .then(r => r.json())
+        .then(r => r.locations)
+        .then(r => r.map(x => ({ province: x.province, ...x.latest })))
+        .catch(err => console.error(`COVID ERROR: ${JSON.stringify(err)}`));
+
+      Object.keys(covidResponse[0]).map(title => {
+        const thNode = document.createElement('th');
+        thNode.textContent = title;
+        trHeader.appendChild(thNode);
+      });
+      table.appendChild(trHeader);
+
+      covidResponse.map(c => {
+        const trRow = document.createElement('tr')
+        Object.values(c).map(val => {
+          const tdNode = document.createElement('td');
+          tdNode.textContent = val;
+          trRow.appendChild(tdNode);
+        });
+        table.appendChild(trRow)
+
+      });
+
+    })()
+
+  </script>
+</body>
+
 </html>
